@@ -2,5 +2,5 @@
 
 @base = http://localhost:3000
 
-GET {{base}}/produto/100 HTTP/1.1
+GET {{base}}/livro/100 HTTP/1.1
 Content-Type: application/json

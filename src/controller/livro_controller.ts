@@ -1,12 +1,25 @@
 import { Request, Response } from "express";
 
-class LivroController {
-    get(req: Request, resp: Response) {
-        const { id } = req.params;
+import { InterLivrosUseCase, LivrosUseCase } from "../usecases/livro_usecase";
 
-        console.log("Request.Params.id: ", id);
-        return resp.status(200).json({ description: '1' });
+interface InterLivroController {
+    setUseCase(livrosUseCase: LivrosUseCase): void;
+    obtem_um(req: Request, resp: Response): void;    
+}
+
+class LivroController {
+    static livrosUseCase: InterLivrosUseCase;
+
+    static setUseCase(livrosUseCase: LivrosUseCase) {
+        LivroController.livrosUseCase = livrosUseCase;
+    }
+
+    static obtem_um(req: Request, resp: Response) {
+        const { id } = req.params;
+        
+        const livro = LivroController.livrosUseCase.recupera_livro(id);
+        resp.status(200).json( livro );
     }
 }
 
-export { LivroController }
+export { InterLivroController, LivroController }

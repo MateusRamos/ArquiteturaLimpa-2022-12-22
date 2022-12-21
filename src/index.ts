@@ -6,8 +6,7 @@ const app = express();
 const route = Router();
 
 const livroController = new LivroController();
-route.get('/livro/:id', livroController.get)
-
+route.get('/livro/:id', LivroController.obtem_um)
 
 app.use(express.json());
 app.use(route);
