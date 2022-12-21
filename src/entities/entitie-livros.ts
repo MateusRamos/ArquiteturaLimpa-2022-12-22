@@ -27,4 +27,4 @@ class Livro implements InterLivros {
 
 }
 
-export { InterLivros }
+export { InterLivros, Livro }

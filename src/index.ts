@@ -1,8 +1,13 @@
 import express, { Router } from "express";
+import { LivroController } from "./controller/livro_controller";
 
 const app = express();
 
 const route = Router();
+
+const livroController = new LivroController();
+route.get('/livro/:id', livroController.get)
+
 
 app.use(express.json());
 app.use(route);
